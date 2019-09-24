@@ -3,5 +3,16 @@
     - name: install pulseaudio-alsa 
       become: yes
       pacman:
-        name: tree, stow, pulseaudio-alsa
+        name: git, tree, stow, yay, pulseaudio-alsa
         state: present
+    - name: install ansible-aur
+      git:
+        repo: https://github.com/kewlfft/ansible-aur.git
+        dest: ~/.ansible/plugins/modules/aur
+    - name: install i3status-rust
+      aur:
+        use: yay
+        name:
+          - i3status-rust
+
+
