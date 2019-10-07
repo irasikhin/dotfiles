@@ -158,6 +158,7 @@ exec vivaldi-stable
 exec idea
 exec guake 
 exec telegram-desktop
+exec kitty 
 #exec discord
 #exec thunderbird
 
@@ -207,7 +208,5 @@ set $discord "discord"
 bindsym $mod+o workspace $discord
 assign [class=".*[D,d]iscord.*"] $discord
 
-# term
-set $term "term"
-bindsym $mod+t workspace $term
-assign [class=".*termite.*"] $term
+#bindsym $mod+grave [instance="kitty"] scratchpad show, move position center
+#for_window [instance="kitty"] floating enable, move scratchpad, resize set 100 ppt 100 ppt 

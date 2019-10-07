@@ -3,7 +3,7 @@
     - name: install pulseaudio-alsa 
       become: yes
       pacman:
-        name: git, tree, stow, yay, pulseaudio-alsa
+        name: git, tree, stow, yay, pulseaudio-alsa, xbindkeys
         state: present
     - name: install ansible-aur
       git:
