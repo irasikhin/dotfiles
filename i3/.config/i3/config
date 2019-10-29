@@ -198,12 +198,12 @@ set $web "web"
 bindsym $mod+u workspace $web
 assign [class="Vivaldi"] $web
 
-# mail
-set $mail "mail" 
-bindsym $mod+n workspace $mail
-assign [class=".*[T,t]hunderbird.*"] $mail
-
 # discord
 set $discord "discord"
 bindsym $mod+o workspace $discord
 assign [class=".*[D,d]iscord.*"] $discord
+
+# slack
+set $slack "slack"
+bindsym $mod+n workspace $slack
+assign [class=".*[S,s]lack.*"] $slack
