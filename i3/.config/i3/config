@@ -207,6 +207,3 @@ assign [class=".*[T,t]hunderbird.*"] $mail
 set $discord "discord"
 bindsym $mod+o workspace $discord
 assign [class=".*[D,d]iscord.*"] $discord
-
-#bindsym $mod+grave [instance="kitty"] scratchpad show, move position center
-#for_window [instance="kitty"] floating enable, move scratchpad, resize set 100 ppt 100 ppt 

@@ -1,4 +1,4 @@
-layout tall
+layout stack
 cd ~
 launch zsh
 focus
