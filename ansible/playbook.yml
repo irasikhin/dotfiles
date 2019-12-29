@@ -14,5 +14,9 @@
         use: yay
         name:
           - i3status-rust
-
+          - antibody
+          - vlc-git
+          - groovy
+          - maven
+          - slack-desktop
 
