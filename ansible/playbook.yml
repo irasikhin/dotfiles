@@ -1,15 +1,15 @@
 - hosts: all
   tasks:
-    - name: install pulseaudio-alsa 
+    - name: install pacman packages
       become: yes
       pacman:
-        name: git, tree, stow, yay, pulseaudio-alsa, xbindkeys
+        name: curl,git,tree,stow,yay,pulseaudio-alsa,xbindkeys
         state: present
     - name: install ansible-aur
       git:
         repo: https://github.com/kewlfft/ansible-aur.git
         dest: ~/.ansible/plugins/modules/aur
-    - name: install i3status-rust
+    - name: install yay packages
       aur:
         use: yay
         name:
