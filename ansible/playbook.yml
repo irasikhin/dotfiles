@@ -19,4 +19,10 @@
           - groovy
           - maven
           - slack-desktop
+          - command-not-found
+          - git-extras
+          - python-cookiecutter
+          - atlassian-jira
+          - pass-git
+          - grip
 
