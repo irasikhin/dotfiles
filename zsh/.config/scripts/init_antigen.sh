@@ -17,7 +17,7 @@ antigen bundle encode64
 antigen bundle extract
 antigen bundle gradle
 antigen bundle history
-antigen bundle jira
+# antigen bundle jira
 antigen bundle lol
 antigen bundle mvn
 antigen bundle sbt

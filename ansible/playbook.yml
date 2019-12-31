@@ -9,9 +9,23 @@
       git:
         repo: https://github.com/kewlfft/ansible-aur.git
         dest: ~/.ansible/plugins/modules/aur
+    - name: create aur_builder
+      become: true
+      user: name=aur_builder
+    - name: add aur_builder to sudoers
+      become: true
+      lineinfile:
+        path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
+        state: present
+        line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+        validate: /usr/sbin/visudo -cf %s
+        create: yes
     - name: install yay packages
+      become: true
+      become_user: aur_builder 
       aur:
-        use: yay
+        use: yay 
+        skip_installed: true
         name:
           - i3status-rust
           - antibody
@@ -25,4 +39,7 @@
           - atlassian-jira
           - pass-git
           - grip
-
+          - buku
+          - cloc
+          - marker
+          - aerc

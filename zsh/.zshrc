@@ -6,6 +6,9 @@ source $SCRIPTS/init_p10k.sh
 # antigen
 source $SCRIPTS/init_antigen.sh
 
+# fzf
+source $SCRIPTS/init_fzf.sh
+
 # global env
 source $SCRIPTS/init_global_env.sh
 
