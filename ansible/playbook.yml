@@ -3,7 +3,7 @@
     - name: install pacman packages
       become: yes
       pacman:
-        name: curl,git,tree,stow,yay,pulseaudio-alsa,pulseaudio-bluetooth,xbindkeys,bluez-utils
+        name: stow,curl,git,tree,stow,yay,pulseaudio-alsa,pulseaudio-bluetooth,xbindkeys,bluez-utils
         state: present
     - name: install ansible-aur
       git:
