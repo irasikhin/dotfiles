@@ -3,7 +3,7 @@
     - name: install pacman packages
       become: yes
       pacman:
-        name: curl,git,tree,stow,yay,pulseaudio-alsa,xbindkeys
+        name: curl,git,tree,stow,yay,pulseaudio-alsa,pulseaudio-bluetooth,xbindkeys,bluez-utils
         state: present
     - name: install ansible-aur
       git:
@@ -22,9 +22,9 @@
         create: yes
     - name: install yay packages
       become: true
-      become_user: aur_builder 
+      become_user: aur_builder
       aur:
-        use: yay 
+        use: yay
         skip_installed: true
         name:
           - i3status-rust
