@@ -19,3 +19,4 @@ alias pacman="sudo pacman"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.config/scripts}/init_work_env.sh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.config/scripts}/init_work_env.sh"
 fi
+
