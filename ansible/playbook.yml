@@ -28,10 +28,14 @@
         skip_installed: true
         name:
           - i3status-rust
+          - jdk
+          - scala
+          - sbt
           - antibody
           - vlc-git
           - groovy
           - maven
+          - gradle
           - slack-desktop
           - command-not-found
           - git-extras
@@ -47,3 +51,18 @@
           - exa
           - cointop
           - fselect
+
+    # Apache Pulsar
+    - name: download pulsar
+      get_url:
+        url: https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=pulsar/pulsar-2.4.2/apache-pulsar-2.4.2-bin.tar.gz
+        dest: ~/work/app/pulsar.tar.gz
+    - name: create directory
+      file:
+        path: ~/work/app/pulsar
+        state: directory
+    - name: unarchive pulsar
+      unarchive:
+        src: ~/work/app/pulsar.tar.gz
+        dest: ~/work/app/pulsar
+        extra_opts: [--strip-components=1]
