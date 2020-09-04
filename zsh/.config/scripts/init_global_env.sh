@@ -10,7 +10,7 @@ export PATH=$PATH:~/work/app/pulsar/bin
 
 # OTHER
 export SBT_HOME=~/work/app/sbt
-export JAVA_HOME=~/work/app/zulu-jdk12
+export JAVA_HOME=/usr/lib/jvm/java-14-jdk
 #export GRAALVM_HOME=~/work/app/graalvm
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:~/bin
 export TERMINAL=termite

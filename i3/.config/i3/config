@@ -149,9 +149,10 @@ bar {
   }
 }
 
-exec_always "setxkbmap -layout us,ru -variant ,, -option grp:alt_shift_toggle"
-exec_always "nitrogen --restore &"
+exec_always "setxkbmap -layout us,ru"
+exec_always "setxkbmap -option grp:alt_shift_toggle"
 exec_always "setxkbmap -option ctrl:nocaps"
+exec_always "nitrogen --restore &"
 exec_always "xcape -e 'Control_L=Escape'"
 exec --no-startup-id nm-applet
 exec vivaldi-stable
@@ -207,3 +208,8 @@ assign [class=".*[D,d]iscord.*"] $discord
 set $slack "slack"
 bindsym $mod+n workspace $slack
 assign [class=".*[S,s]lack.*"] $slack
+
+# vs code
+set $code "code"
+bindsym $mod+c workspace $code
+assign [class=".*[C,c]ode.*"] $code
