@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 # antigen
-source $HOME/bin/antigen.zsh
+source antigen.zsh
 
 # omz
 antigen use oh-my-zsh
@@ -18,7 +18,7 @@ antigen bundle extract
 antigen bundle gradle
 antigen bundle history
 # antigen bundle jira
-antigen bundle lol
+#antigen bundle lol
 antigen bundle mvn
 antigen bundle sbt
 antigen bundle ssh-agent

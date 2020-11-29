@@ -1,14 +1,42 @@
-- hosts: all
+- hosts: 127.0.0.1
+  roles:
+    - kewlfft.aur
   tasks:
+    - name: upgrade pacman packages
+      become: yes
+      pacman:
+        upgrade: yes
     - name: install pacman packages
       become: yes
       pacman:
-        name: stow,curl,git,tree,stow,yay,pulseaudio-alsa,pulseaudio-bluetooth,xbindkeys,bluez-utils,scala
+        name:
+          - base-devel
+          - feh
+          - i3lock
+          - vivaldi
+          - neovim
+          - byobu
+          - pango
+          - rofi
+          - ttf-font-awesome
+          - ttf-dejavu
+          - ttf-fira-code
+          - docker
+          - i3-wm
+          - i3status-rust
+          - vlc
+          - stow
+          - curl
+          - git
+          - tree
+          - stow
+          - yay
+          - pulseaudio-alsa
+          - pulseaudio-bluetooth
+          - xbindkeys
+          - bluez-utils
+          - scala
         state: present
-    - name: install ansible-aur
-      git:
-        repo: https://github.com/kewlfft/ansible-aur.git
-        dest: ~/.ansible/plugins/modules/aur
     - name: create aur_builder
       become: true
       user: name=aur_builder
@@ -20,19 +48,22 @@
         line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
         validate: /usr/sbin/visudo -cf %s
         create: yes
+    - name: upgrade yay
+      become: true
+      become_user: aur_builder
+      aur:
+        use: yay
+        upgrade: yes
     - name: install yay packages
       become: true
       become_user: aur_builder
       aur:
         use: yay
-        skip_installed: true
         name:
           - i3status-rust
           - jdk
           - scala
           - sbt
-          - antibody
-          - vlc-git
           - groovy
           - maven
           - gradle
@@ -51,18 +82,19 @@
           - exa
           - cointop
           - fselect
-
-    # Apache Pulsar
-    - name: download pulsar
-      get_url:
-        url: https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=pulsar/pulsar-2.4.2/apache-pulsar-2.4.2-bin.tar.gz
-        dest: ~/work/app/pulsar.tar.gz
-    - name: create directory
-      file:
-        path: ~/work/app/pulsar
-        state: directory
-    - name: unarchive pulsar
-      unarchive:
-        src: ~/work/app/pulsar.tar.gz
-        dest: ~/work/app/pulsar
-        extra_opts: [--strip-components=1]
+          - guake
+          - telegram-desktop-bin
+          - google-chrome
+          - autojump
+          - ttf-material-icons-git
+          - tealdeer
+    - name: install space vim
+      shell: "curl -sLf https://spacevim.org/install.sh | bash"
+    - name: install antigen
+      become: true
+      shell: "curl -L git.io/antigen > /usr/local/bin/antigen.zsh"
+    - name: enable docker
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
