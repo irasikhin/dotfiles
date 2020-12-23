@@ -22,6 +22,7 @@
           - ttf-dejavu
           - ttf-fira-code
           - docker
+          - docker-compose
           - i3-wm
           - i3status-rust
           - vlc
@@ -36,10 +37,12 @@
           - xbindkeys
           - bluez-utils
           - scala
+          - translate-shell
         state: present
     - name: create aur_builder
       become: true
-      user: name=aur_builder
+      user:
+        name: aur_builder
     - name: add aur_builder to sudoers
       become: true
       lineinfile:
@@ -88,6 +91,8 @@
           - autojump
           - ttf-material-icons-git
           - tealdeer
+          - interception-tools
+          - interception-caps2esc
     - name: install space vim
       shell: "curl -sLf https://spacevim.org/install.sh | bash"
     - name: install antigen
@@ -96,5 +101,26 @@
     - name: enable docker
       systemd:
         name: docker
+        enabled: yes
+        state: started
+    - name: setup sudo without password
+      become: true
+      lineinfile:
+        path: /etc/sudoers.d/irasikhin
+        create: true
+        line: "irasikhin ALL=(ALL) NOPASSWD: ALL"
+    - name: setup udevmon
+      become: yes
+      blockinfile:
+        path: /etc/interception/udevmon.d/caps2esc.yaml
+        create: true
+        block: |
+          - JOB: "intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
+            DEVICE:
+              EVENTS:
+                EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+    - name: enable udevmon
+      systemd:
+        name: udevmon
         enabled: yes
         state: started

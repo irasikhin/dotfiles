@@ -1,4 +1,5 @@
 set $mod Mod4
+set $alt Mod1
 new_window 1pixel
 font hack:monospace 16
 floating_modifier $mod
@@ -7,7 +8,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+a focus parent,kill
 
 # rofi
-bindsym $mod+d exec "rofi -show combi -sidebar-mode" 
+bindsym $alt+d exec "rofi -show combi -sidebar-mode"
 bindsym $mod+Tab exec "rofi -show window"
 
 # change focus
