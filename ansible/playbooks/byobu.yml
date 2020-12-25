@@ -1,0 +1,4 @@
+---
+
+- name: enable byobu
+  shell: byobu-enable

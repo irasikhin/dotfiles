@@ -1,0 +1,46 @@
+---
+
+- name: upgrade pacman packages
+  become: yes
+  pacman:
+    upgrade: yes
+- name: install pacman packages
+  become: yes
+  pacman:
+    name:
+      - base-devel
+      - feh
+      - i3lock
+      - vivaldi
+      - neovim
+      - byobu
+      - pango
+      - rofi
+      - ttf-font-awesome
+      - ttf-dejavu
+      - ttf-fira-code
+      - docker
+      - docker-compose
+      - i3-wm
+      - i3status-rust
+      - vlc
+      - stow
+      - curl
+      - git
+      - tree
+      - stow
+      - yay
+      - alsa-utils
+      - alsa-plugins
+      - alsa-tools
+      - pulseaudio-alsa
+      - pulseaudio-bluetooth
+      - xbindkeys
+      - xsel
+      - xdotool
+      - bluez
+      - bluez-utils
+      - scala
+      - translate-shell
+      - unclutter
+    state: present

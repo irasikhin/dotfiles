@@ -2,43 +2,8 @@
   roles:
     - kewlfft.aur
   tasks:
-    - name: upgrade pacman packages
-      become: yes
-      pacman:
-        upgrade: yes
     - name: install pacman packages
-      become: yes
-      pacman:
-        name:
-          - base-devel
-          - feh
-          - i3lock
-          - vivaldi
-          - neovim
-          - byobu
-          - pango
-          - rofi
-          - ttf-font-awesome
-          - ttf-dejavu
-          - ttf-fira-code
-          - docker
-          - docker-compose
-          - i3-wm
-          - i3status-rust
-          - vlc
-          - stow
-          - curl
-          - git
-          - tree
-          - stow
-          - yay
-          - pulseaudio-alsa
-          - pulseaudio-bluetooth
-          - xbindkeys
-          - bluez-utils
-          - scala
-          - translate-shell
-        state: present
+      include: playbooks/pacman_packages.yml
     - name: create aur_builder
       become: true
       user:
@@ -110,17 +75,8 @@
         create: true
         line: "irasikhin ALL=(ALL) NOPASSWD: ALL"
     - name: setup udevmon
-      become: yes
-      blockinfile:
-        path: /etc/interception/udevmon.d/caps2esc.yaml
-        create: true
-        block: |
-          - JOB: "intercept -g $DEVNODE | caps2esc | uinput -d $DEVNODE"
-            DEVICE:
-              EVENTS:
-                EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-    - name: enable udevmon
-      systemd:
-        name: udevmon
-        enabled: yes
-        state: started
+      include: playbooks/udevmon.yml
+    - name: setup byobu
+      include: playbooks/byobu.yml
+    - name: setup headsets
+      include: playbooks/headset.yml
