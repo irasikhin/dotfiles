@@ -5,7 +5,7 @@
     - name: install pacman packages
       include: playbooks/pacman_packages.yml
     - name: install aur packages
-      include: playbooks/aur.yml
+      include: playbooks/aur_packages.yml
     - name: install space vim
       shell: "curl -sLf https://spacevim.org/install.sh | bash"
     - name: install antigen
