@@ -1,0 +1,56 @@
+---
+
+- name: create aur_builder
+  become: true
+  user:
+    name: aur_builder
+- name: add aur_builder to sudoers
+  become: true
+  lineinfile:
+    path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
+    state: present
+    line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+    validate: /usr/sbin/visudo -cf %s
+    create: yes
+- name: upgrade yay
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    upgrade: yes
+- name: install yay packages
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    name:
+      - i3status-rust
+      - jdk
+      - scala
+      - sbt
+      - groovy
+      - maven
+      - gradle
+      - slack-desktop
+      - command-not-found
+      - git-extras
+      - python-cookiecutter
+      - atlassian-jira
+      - pass-git
+      - grip
+      - buku
+      - cloc
+      - marker
+      - aerc
+      - lazydocker
+      - exa
+      - cointop
+      - fselect
+      - guake
+      - telegram-desktop-bin
+      - google-chrome
+      - autojump
+      - ttf-material-icons-git
+      - tealdeer
+      - interception-tools
+      - interception-caps2esc

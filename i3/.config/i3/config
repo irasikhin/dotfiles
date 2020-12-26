@@ -156,7 +156,7 @@ exec_always "setxkbmap -option ctrl:nocaps"
 exec_always "nitrogen --restore &"
 exec_always "xcape -e 'Control_L=Escape'"
 exec --no-startup-id nm-applet
-exec vivaldi-stable
+exec google-chrome-stable
 exec idea
 exec guake 
 exec telegram-desktop
@@ -198,7 +198,7 @@ assign [class=".*Telegram.*"] $msg
 # web
 set $web "web"
 bindsym $mod+u workspace $web
-assign [class="Vivaldi"] $web
+assign [class=".*[C,c]hrome.*"] $web
 
 # discord
 set $discord "discord"
