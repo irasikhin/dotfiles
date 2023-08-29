@@ -6,6 +6,8 @@
       include: playbooks/pacman_packages.yml
     - name: install aur packages
       include: playbooks/aur_packages.yml
+    - name: install sdkman
+      shell: "curl -s 'https://get.sdkman.io' | bash"
     - name: install space vim
       shell: "curl -sLf https://spacevim.org/install.sh | bash"
     - name: install antigen
@@ -28,3 +30,7 @@
       include: playbooks/byobu.yml
     - name: setup headsets
       include: playbooks/headset.yml
+    - name: setup background
+      include: playbooks/background.yml
+    - name: setxkbmap
+      include: playbooks/setup_setxkbmap.yml

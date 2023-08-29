@@ -227,3 +227,4 @@ assign [class=".*[A,a]lacritty.*"] $terminal
 set $steam "steam"
 bindsym $mod+p workspace $steam
 assign [class=".*[S,s]team.*"] $steam
+exec_always --no-startup-id feh --no-fehbg --bg-scale /usr/local/share/wallpaper/house_fairy_tale_art_101615_1920x1080.jpg &

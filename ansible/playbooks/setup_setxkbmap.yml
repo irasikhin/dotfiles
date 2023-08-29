@@ -1,0 +1,12 @@
+- name: setup setxkbmap
+  lineinfile:
+    dest: /home/irasikhin/.profile
+    state: present
+    line: 'setxkbmap -option grp:shifts_toggle'
+    regexp: 'setxkbmap -option grp:shifts_toggle'
+- name: setup setxkbmap
+  lineinfile:
+    dest: /home/irasikhin/.profile
+    state: present
+    line: 'setxkbmap -layout us,ru'
+    regexp: 'setxkbmap -layout us,ru'

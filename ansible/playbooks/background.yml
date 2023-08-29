@@ -1,0 +1,28 @@
+---
+
+- name: create wallpaper dir
+  become: true
+  file:
+    path: /usr/local/share/wallpaper
+    state: directory
+- name: download wallpaper
+  become: true
+  get_url:
+    url: https://images.wallpaperscraft.com/image/single/house_fairy_tale_art_101615_1920x1080.jpg
+    dest: /usr/local/share/wallpaper/house_fairy_tale_art_101615_1920x1080.jpg
+- name: set wallpaper in feh
+  become: true
+  shell: feh --bg-scale /usr/local/share/wallpaper/house_fairy_tale_art_101615_1920x1080.jpg
+- name: add wallpaper to ~/.xinitrc
+  lineinfile:
+    #TODO Вынести irasikhin в перменную
+    path: /home/irasikhin/.config/i3/config
+    state: present
+    line: "exec_always --no-startup-id feh --no-fehbg --bg-scale /usr/local/share/wallpaper/house_fairy_tale_art_101615_1920x1080.jpg &"
+    regexp: "exec_always --no-startup-id feh --no-fehbg --bg-scale /usr/local/share/wallpaper/house_fairy_tale_art_101615_1920x1080.jpg &"
+
+- name: download i3lock wallpaper
+  become: true
+  get_url:
+    url: https://images.wallpaperscraft.com/image/single/mask_neon_anonymous_180568_1920x1080.jpg
+    dest: /usr/local/share/wallpaper/i3lock.jpg
