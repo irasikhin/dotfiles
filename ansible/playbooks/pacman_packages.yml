@@ -44,4 +44,5 @@
       - translate-shell
       - unclutter
       - xclip
+      - fzf
     state: present
