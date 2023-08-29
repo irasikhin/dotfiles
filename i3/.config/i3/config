@@ -1,6 +1,6 @@
 set $mod Mod4
 set $alt Mod1
-new_window 1pixel
+default_border none
 font hack:monospace 16
 floating_modifier $mod
 bindsym $mod+Return exec termite -e /bin/zsh 
@@ -104,7 +104,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+w exec "i3lock -i ~/.images/wallhaven-768527_1920x1080.png"
+bindsym $mod+Shift+w exec "i3lock -i /usr/local/share/wallpaper/i3lock.png"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -150,11 +150,11 @@ bar {
   }
 }
 
-exec_always "setxkbmap -layout us,ru"
-exec_always "setxkbmap -option grp:alt_shift_toggle"
-exec_always "setxkbmap -option ctrl:nocaps"
-exec_always "nitrogen --restore &"
-exec_always "xcape -e 'Control_L=Escape'"
+exec "setxkbmap -layout us,ru"
+exec "setxkbmap -option grp:shifts_toggle"
+exec "setxkbmap -option ctrl:nocaps"
+#exec_always "nitrogen --restore &"
+#exec_always "xcape -e 'Control_L=Escape'"
 exec --no-startup-id nm-applet
 exec google-chrome-stable
 exec idea
@@ -173,8 +173,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-# bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 1
-# bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 1
+bindsym XF86MonBrightnessUp exec --no-startup-id brillo -A 5
+bindsym XF86MonBrightnessDown exec --no-startup-id brillo -U 5
 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -214,3 +214,16 @@ assign [class=".*[S,s]lack.*"] $slack
 set $code "code"
 bindsym $mod+c workspace $code
 assign [class=".*[C,c]ode.*"] $code
+
+exec_always --no-startup-id feh --no-fehbg --bg-scale /usr/local/share/wallpaper/jungle_fantasy_deer_butterflies_night_trees.jpg &
+
+for_window [class="^.*"] border pixel 0
+
+set $terminal "terminal"
+bindsym $mod+t workspace $terminal
+assign [class=".*[A,a]lacritty.*"] $terminal
+
+# steam 
+set $steam "steam"
+bindsym $mod+p workspace $steam
+assign [class=".*[S,s]team.*"] $steam
