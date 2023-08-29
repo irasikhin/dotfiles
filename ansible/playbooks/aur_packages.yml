@@ -47,7 +47,7 @@
       - cointop
       - fselect
       - guake
-      - telegram-desktop-bin
+      - telegram-desktop
       - google-chrome
       - autojump
       - ttf-material-icons-git
