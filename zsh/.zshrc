@@ -1,14 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export SCRIPTS=$HOME/.config/scripts
-
-# p10k
-source $SCRIPTS/init_p10k.sh
 
 # antigen
 source $SCRIPTS/init_antigen.sh
@@ -23,19 +13,58 @@ source $SCRIPTS/init_global_env.sh
 alias pacman="sudo pacman"
 
 # docker
-alias docker="sudo docker"
+alias docker="podman"
+
+# docker-compose
+alias docker-compose="podman-compose"
+
+# python-local
+alias python-local=". ~/.python/bin/activate"
 
 # work environment
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.config/scripts}/init_work_env.sh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.config/scripts}/init_work_env.sh"
 fi
 
-export PATH=$PATH:/home/irasikhin/work/pr/proto-api-all/scripts
-export PATH=$PATH:/home/irasikhin/.gem/ruby/2.7.0/bin
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# starship
+
+eval "$(starship init zsh)"
+
+# eza
+alias ls='eza --icons --group-directories-first --color=auto'
+alias ll='eza -l --icons --group-directories-first --color=auto'
+alias la='eza -la --icons --group-directories-first --color=auto'
+alias lh='eza -lh --icons --group-directories-first --color=auto'
+alias lt='eza --tree --icons --color=auto'
+
+# fzf
+eval "$(fzf --zsh)"
+
+# Используем fd для поиска файлов
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {} | head -100'"
+
+# Используем fd для поиска каталогов
+export FZF_ALT_C_COMMAND='fd --type d'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -100'"
+
+# Цветовая схема и другие опции
+export FZF_DEFAULT_OPTS="
+  --color=bg+:24,hl:65,fg:252,header:204,info:108,pointer:167,marker:174,spinner:108,prompt:109
+  --height 40%
+  --layout=reverse
+  --border
+"
+# zoxide
+
+eval "$(zoxide init zsh)"
+
+# bat
+
+alias cat='bat --style=full --paging=always --decorations=always'
+source ~/.config/broot/launcher/bash/br

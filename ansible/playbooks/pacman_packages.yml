@@ -10,8 +10,7 @@
     name:
       - base-devel
       - feh
-      - i3lock
-      - vivaldi
+      - betterlockscreen
       - neovim
       - byobu
       - pango
@@ -28,7 +27,6 @@
       - curl
       - git
       - tree
-      - stow
       - yay
       - alsa-utils
       - alsa-plugins
@@ -45,4 +43,10 @@
       - unclutter
       - xclip
       - fzf
+      - chezmoi
+      - eza
+      - ripgrep
+      - fd
+      - bat
+      - qutebrowser
     state: present

@@ -3,13 +3,11 @@
     - kewlfft.aur
   tasks:
     - name: install pacman packages
-      include: playbooks/pacman_packages.yml
+      include_tasks: playbooks/pacman_packages.yml
     - name: install aur packages
-      include: playbooks/aur_packages.yml
+      include_tasks: playbooks/aur_packages.yml
     - name: install sdkman
       shell: "curl -s 'https://get.sdkman.io' | bash"
-    - name: install space vim
-      shell: "curl -sLf https://spacevim.org/install.sh | bash"
     - name: install antigen
       become: true
       shell: "curl -L git.io/antigen > /usr/local/bin/antigen.zsh"
@@ -25,12 +23,12 @@
         create: true
         line: "irasikhin ALL=(ALL) NOPASSWD: ALL"
     - name: setup udevmon
-      include: playbooks/udevmon.yml
+      include_tasks: playbooks/udevmon.yml
     - name: setup byobu
-      include: playbooks/byobu.yml
+      include_tasks: playbooks/byobu.yml
     - name: setup headsets
-      include: playbooks/headset.yml
-    - name: setup background
-      include: playbooks/background.yml
+      include_tasks: playbooks/headset.yml
+#    - name: setup background
+#      include_tasks: playbooks/background.yml
     - name: setxkbmap
-      include: playbooks/setup_setxkbmap.yml
+      include_tasks: playbooks/setup_setxkbmap.yml

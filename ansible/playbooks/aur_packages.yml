@@ -23,34 +23,29 @@
   become_user: aur_builder
   aur:
     use: yay
+    state: latest
     name:
       - i3status-rust
+      - zsh-antidote
+      - librewolf
       - jdk
       - scala
       - sbt
       - groovy
       - maven
       - gradle
-      - slack-desktop
       - command-not-found
       - git-extras
-      - python-cookiecutter
-      - atlassian-jira
       - pass-git
       - grip
       - buku
       - cloc
-      - marker
-      - aerc
       - lazydocker
-      - exa
       - cointop
       - fselect
-      - guake
       - telegram-desktop
-      - google-chrome
-      - autojump
       - ttf-material-icons-git
+      - ttf-firacode-ner
       - tealdeer
       - interception-tools
       - interception-caps2esc

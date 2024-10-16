@@ -3,6 +3,7 @@ set $alt Mod1
 default_border none
 font hack:monospace 16
 floating_modifier $mod
+workspace_auto_back_and_forth yes
 bindsym $mod+Return exec termite -e /bin/zsh 
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+a focus parent,kill
@@ -104,7 +105,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+w exec "i3lock -i /usr/local/share/wallpaper/i3lock.png"
+
+bindsym $mod+Shift+w exec "betterlockscreen -l dim"
+#bindsym $mod+Shift+w exec "i3-msg exit"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -150,20 +153,6 @@ bar {
   }
 }
 
-exec "setxkbmap -layout us,ru"
-exec "setxkbmap -option grp:shifts_toggle"
-exec "setxkbmap -option ctrl:nocaps"
-#exec_always "nitrogen --restore &"
-#exec_always "xcape -e 'Control_L=Escape'"
-exec --no-startup-id nm-applet
-exec google-chrome-stable
-exec idea
-exec guake 
-exec telegram-desktop
-exec kitty 
-#exec discord
-#exec thunderbird
-
 focus_on_window_activation focus
 
 # Pulse Audio controls
@@ -198,12 +187,17 @@ assign [class=".*Telegram.*"] $msg
 # web
 set $web "web"
 bindsym $mod+u workspace $web
-assign [class=".*[C,c]hrome.*"] $web
+assign [class=".*[L,l]ibrewolf.*"] $web
 
 # discord
 set $discord "discord"
-bindsym $mod+o workspace $discord
+bindsym $mod+d workspace $discord
 assign [class=".*[D,d]iscord.*"] $discord
+
+# obsidian
+set $obsidian "obsidian"
+bindsym $mod+o workspace $obsidian
+assign [class=".*[O,o]bsidian.*"] $obsidian
 
 # slack
 set $slack "slack"
@@ -215,16 +209,39 @@ set $code "code"
 bindsym $mod+c workspace $code
 assign [class=".*[C,c]ode.*"] $code
 
-exec_always --no-startup-id feh --no-fehbg --bg-scale /usr/local/share/wallpaper/jungle_fantasy_deer_butterflies_night_trees.jpg &
-
-for_window [class="^.*"] border pixel 0
+# clion 
+set $clion "clion"
+bindsym $mod+y workspace $clion
+assign [class=".*[C,c]lion.*"] $clion
 
 set $terminal "terminal"
-bindsym $mod+t workspace $terminal
+bindcode --release 133 exec --no-startup-id /home/irasikhin/work/pr/dotfiles/zsh/.config/scripts/double_mod_switch.sh
 assign [class=".*[A,a]lacritty.*"] $terminal
 
 # steam 
 set $steam "steam"
 bindsym $mod+p workspace $steam
 assign [class=".*[S,s]team.*"] $steam
-exec_always --no-startup-id feh --no-fehbg --bg-scale /usr/local/share/wallpaper/house_fairy_tale_art_101615_1920x1080.jpg &
+
+# thunderbird
+set $thunderbird "thunderbird"
+bindsym $mod+t workspace $thunderbird
+assign [class=".*[T,t]hunderbird.*"] $thunderbird
+
+# libreoffice
+set $libreoffice "libreoffice"
+bindsym $mod+b workspace $libreoffice
+assign [class=".*[L,l]ibreoffice.*"] $libreoffice
+
+for_window [class="^.*"] border pixel 0
+
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-color -c 04090e --nofork
+exec --no-startup-id betterlockscreen -u ~/.wallpaper -w
+exec --no-startup-id nm-applet
+exec --no-startup-id i3-msg 'workspace $terminal; exec alacritty'
+exec --no-startup-id i3-msg 'workspace $web; exec librewolf'
+exec --no-startup-id i3-msg 'workspace $idea; exec idea'
+exec --no-startup-id i3-msg 'workspace $msg; exec telegram-desktop'
+exec --no-startup-id i3-msg 'workspace $thunderbird; exec thunderbird'
+# exec_always --no-startup-id feh --no-fehbg --bg-scale /usr/local/share/wallpaper/jungle_fantasy_deer_butterflies_night_trees.jpg &
+# exec --no-startup-id feh --no-fehbg --bg-scale /usr/local/share/wallpaper/house_fairy_tale_art_101615_1920x1080.jpg &
