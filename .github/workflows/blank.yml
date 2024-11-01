@@ -23,5 +23,5 @@ jobs:
 #
       - name: Install Ansible and Run Script
         run: |
-          sudo pacman --noconfirm -Syu ansible
+          pacman --noconfirm -Syu ansible
           ./install.sh
