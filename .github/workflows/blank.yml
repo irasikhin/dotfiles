@@ -24,4 +24,9 @@ jobs:
       - name: Install Ansible and Run Script
         run: |
           pacman --noconfirm -Syu ansible
-          ${{ github.workspace }}/install.sh
+          cd ${{ github.workspace }}
+          echo '1'
+          ls
+          echo '2'
+          ls ../
+          ../install.sh
