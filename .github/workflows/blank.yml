@@ -15,12 +15,8 @@ jobs:
       image: archlinux
 
     steps:
-      #      - name: Checkout repository
-      #        uses: actions/checkout@v3
-      #
-      #      - name: Set up Arch Linux environment
-      #        uses: heyhusen/archlinux-package-action@v2
-      #
+      - uses: actions/checkout@v3
+
       - name: Install Ansible
         run: pacman --noconfirm -Syu ansible
 
