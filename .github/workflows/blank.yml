@@ -20,7 +20,7 @@ jobs:
       - name: Install Ansible
         run: pacman --noconfirm -Sy python python-pip ansible-core ansible
 
-      - name: Add venv
+      - name: Test
         run: |
           python -m venv ./venv
           source ./venv/bin/activate

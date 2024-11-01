@@ -1,5 +1,5 @@
 - hosts: 127.0.0.1
-  roles:
+  collections:
     - kewlfft.aur
   tasks:
     - name: install pacman packages
@@ -28,7 +28,7 @@
       include_tasks: playbooks/byobu.yml
     - name: setup headsets
       include_tasks: playbooks/headset.yml
-#    - name: setup background
-#      include_tasks: playbooks/background.yml
+    #    - name: setup background
+    #      include_tasks: playbooks/background.yml
     - name: setxkbmap
       include_tasks: playbooks/setup_setxkbmap.yml
