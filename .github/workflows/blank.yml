@@ -12,13 +12,19 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: archlinux:base-20240714.0.246936
+      image: archlinux:latest
 
     steps:
       - uses: actions/checkout@v3
 
       - name: Install Ansible
-        run: pacman --noconfirm -Sy ansible-core ansible
+        run: pacman --noconfirm -Sy python python-pip ansible-core ansible
+
+      - name: Use venv
+        run: python -m venv ./venv & source ./venv/bin/activate
+
+      - name: Install ansible-devel
+        run: python3 -m pip install https://github.com/ansible/ansible/archive/devel.tar.gz
 
       - name: Run Script
         run: bash ${GITHUB_WORKSPACE}/install.sh
