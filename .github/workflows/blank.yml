@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Arch Linux environment
-        uses: larrabee/archlinux-github-action@v1
+        uses: heyhusen/archlinux-package-action@v2
 
       - name: Install Ansible and Run Script
         run: |
