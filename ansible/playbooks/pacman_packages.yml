@@ -2,11 +2,11 @@
 
 - name: upgrade pacman packages
   become: yes
-  pacman:
+  community.general.pacman:
     upgrade: yes
 - name: install pacman packages
   become: yes
-  pacman:
+  community.general.pacman:
     name:
       - base-devel
       - feh
