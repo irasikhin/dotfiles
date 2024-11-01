@@ -21,13 +21,8 @@ jobs:
         run: pacman --noconfirm -Sy python python-pip ansible-core ansible
 
       - name: Add venv
-        run: python -m venv ./venv
-
-      - name: Use venv
-        run: source ./venv/bin/activate
-
-      - name: Install ansible-devel
-        run: python3 -m pip install https://github.com/ansible/ansible/archive/devel.tar.gz
-
-      - name: Run Script
-        run: bash ${GITHUB_WORKSPACE}/install.sh
+        run: |
+          python -m venv ./venv
+          source ./venv/bin/activate
+          python3 -m pip install https://github.com/ansible/ansible/archive/devel.tar.gz
+          bash ${GITHUB_WORKSPACE}/install.sh
