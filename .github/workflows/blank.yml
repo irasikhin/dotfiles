@@ -15,17 +15,14 @@ jobs:
       image: archlinux
 
     steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v3
-#
-#      - name: Set up Arch Linux environment
-#        uses: heyhusen/archlinux-package-action@v2
-#
-      - name: Install Ansible and Run Script
-        run: |
-          pacman --noconfirm -Syu ansible
-          echo '1'
-          ls
-          echo '2'
-          ls ../
-          ../install.sh
+      #      - name: Checkout repository
+      #        uses: actions/checkout@v3
+      #
+      #      - name: Set up Arch Linux environment
+      #        uses: heyhusen/archlinux-package-action@v2
+      #
+      - name: Install Ansible
+        run: pacman --noconfirm -Syu ansible
+
+      - name: Run Script
+        run: bash ${GITHUB_WORKSPACE}/install.sh
