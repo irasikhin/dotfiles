@@ -12,7 +12,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     container:
-      image: archlinux:base-20240915.0.262934
+      image: archlinux:base-20240714.0.246936
 
     steps:
       - uses: actions/checkout@v3
