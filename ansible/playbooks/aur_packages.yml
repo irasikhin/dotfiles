@@ -52,14 +52,6 @@
     state: latest
     name: zsh-antidote
 
-- name: Install librewolf
-  become: true
-  become_user: aur_builder
-  aur:
-    use: yay
-    state: latest
-    name: librewolf
-
 - name: Install jdk
   become: true
   become_user: aur_builder
@@ -234,4 +226,12 @@
   aur:
     name: betterlockscreen
     state: present
+
+- name: Install librewolf
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: librewolf
 
