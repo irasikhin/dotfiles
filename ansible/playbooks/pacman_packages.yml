@@ -172,12 +172,6 @@
     name: bluez-utils
     state: present
 
-- name: Install scala
-  become: yes
-  community.general.pacman:
-    name: scala
-    state: present
-
 - name: Install translate-shell
   become: yes
   community.general.pacman:
