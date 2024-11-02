@@ -1,52 +1,251 @@
 ---
-
-- name: upgrade pacman packages
+- name: Upgrade all Pacman packages
   become: yes
   community.general.pacman:
     upgrade: yes
-- name: install pacman packages
+
+- name: Install base-devel
   become: yes
   community.general.pacman:
-    name:
-      - base-devel
-      - feh
-      - betterlockscreen
-      - neovim
-      - byobu
-      - pango
-      - rofi
-      - ttf-font-awesome
-      - ttf-dejavu
-      - ttf-fira-code
-      - docker
-      - docker-compose
-      - i3-wm
-      - i3status-rust
-      - vlc
-      - stow
-      - curl
-      - git
-      - tree
-      - yay
-      - alsa-utils
-      - alsa-plugins
-      - alsa-tools
-      - pulseaudio-alsa
-      - pulseaudio-bluetooth
-      - xbindkeys
-      - xsel
-      - xdotool
-      - bluez
-      - bluez-utils
-      - scala
-      - translate-shell
-      - unclutter
-      - xclip
-      - fzf
-      - chezmoi
-      - eza
-      - ripgrep
-      - fd
-      - bat
-      - qutebrowser
+    name: base-devel
+    state: present
+
+- name: Install feh
+  become: yes
+  community.general.pacman:
+    name: feh
+    state: present
+
+- name: Install betterlockscreen
+  become: yes
+  community.general.pacman:
+    name: betterlockscreen
+    state: present
+
+- name: Install neovim
+  become: yes
+  community.general.pacman:
+    name: neovim
+    state: present
+
+- name: Install byobu
+  become: yes
+  community.general.pacman:
+    name: byobu
+    state: present
+
+- name: Install pango
+  become: yes
+  community.general.pacman:
+    name: pango
+    state: present
+
+- name: Install rofi
+  become: yes
+  community.general.pacman:
+    name: rofi
+    state: present
+
+- name: Install ttf-font-awesome
+  become: yes
+  community.general.pacman:
+    name: ttf-font-awesome
+    state: present
+
+- name: Install ttf-dejavu
+  become: yes
+  community.general.pacman:
+    name: ttf-dejavu
+    state: present
+
+- name: Install ttf-fira-code
+  become: yes
+  community.general.pacman:
+    name: ttf-fira-code
+    state: present
+
+- name: Install docker
+  become: yes
+  community.general.pacman:
+    name: docker
+    state: present
+
+- name: Install docker-compose
+  become: yes
+  community.general.pacman:
+    name: docker-compose
+    state: present
+
+- name: Install i3-wm
+  become: yes
+  community.general.pacman:
+    name: i3-wm
+    state: present
+
+- name: Install i3status-rust
+  become: yes
+  community.general.pacman:
+    name: i3status-rust
+    state: present
+
+- name: Install vlc
+  become: yes
+  community.general.pacman:
+    name: vlc
+    state: present
+
+- name: Install stow
+  become: yes
+  community.general.pacman:
+    name: stow
+    state: present
+
+- name: Install curl
+  become: yes
+  community.general.pacman:
+    name: curl
+    state: present
+
+- name: Install git
+  become: yes
+  community.general.pacman:
+    name: git
+    state: present
+
+- name: Install tree
+  become: yes
+  community.general.pacman:
+    name: tree
+    state: present
+
+- name: Install yay
+  become: yes
+  community.general.pacman:
+    name: yay
+    state: present
+
+- name: Install alsa-utils
+  become: yes
+  community.general.pacman:
+    name: alsa-utils
+    state: present
+
+- name: Install alsa-plugins
+  become: yes
+  community.general.pacman:
+    name: alsa-plugins
+    state: present
+
+- name: Install alsa-tools
+  become: yes
+  community.general.pacman:
+    name: alsa-tools
+    state: present
+
+- name: Install pulseaudio-alsa
+  become: yes
+  community.general.pacman:
+    name: pulseaudio-alsa
+    state: present
+
+- name: Install pulseaudio-bluetooth
+  become: yes
+  community.general.pacman:
+    name: pulseaudio-bluetooth
+    state: present
+
+- name: Install xbindkeys
+  become: yes
+  community.general.pacman:
+    name: xbindkeys
+    state: present
+
+- name: Install xsel
+  become: yes
+  community.general.pacman:
+    name: xsel
+    state: present
+
+- name: Install xdotool
+  become: yes
+  community.general.pacman:
+    name: xdotool
+    state: present
+
+- name: Install bluez
+  become: yes
+  community.general.pacman:
+    name: bluez
+    state: present
+
+- name: Install bluez-utils
+  become: yes
+  community.general.pacman:
+    name: bluez-utils
+    state: present
+
+- name: Install scala
+  become: yes
+  community.general.pacman:
+    name: scala
+    state: present
+
+- name: Install translate-shell
+  become: yes
+  community.general.pacman:
+    name: translate-shell
+    state: present
+
+- name: Install unclutter
+  become: yes
+  community.general.pacman:
+    name: unclutter
+    state: present
+
+- name: Install xclip
+  become: yes
+  community.general.pacman:
+    name: xclip
+    state: present
+
+- name: Install fzf
+  become: yes
+  community.general.pacman:
+    name: fzf
+    state: present
+
+- name: Install chezmoi
+  become: yes
+  community.general.pacman:
+    name: chezmoi
+    state: present
+
+- name: Install eza
+  become: yes
+  community.general.pacman:
+    name: eza
+    state: present
+
+- name: Install ripgrep
+  become: yes
+  community.general.pacman:
+    name: ripgrep
+    state: present
+
+- name: Install fd
+  become: yes
+  community.general.pacman:
+    name: fd
+    state: present
+
+- name: Install bat
+  become: yes
+  community.general.pacman:
+    name: bat
+    state: present
+
+- name: Install qutebrowser
+  become: yes
+  community.general.pacman:
+    name: qutebrowser
     state: present

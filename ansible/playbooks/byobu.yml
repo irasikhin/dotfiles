@@ -1,4 +1,3 @@
 ---
-
-- name: enable byobu
-  shell: byobu-enable
+- name: Enable Byobu
+  command: byobu-enable

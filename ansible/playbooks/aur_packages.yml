@@ -1,10 +1,10 @@
 ---
-
-- name: create aur_builder
+- name: Create aur_builder user
   become: true
   user:
     name: aur_builder
-- name: add aur_builder to sudoers
+
+- name: Add aur_builder to sudoers for pacman
   become: true
   lineinfile:
     path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
@@ -12,40 +12,203 @@
     line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
     validate: /usr/sbin/visudo -cf %s
     create: yes
-- name: upgrade yay
+
+- name: Upgrade all packages using yay
   become: true
   become_user: aur_builder
   aur:
     use: yay
     upgrade: yes
-- name: install yay packages
+
+# Install each AUR package in a separate task
+- name: Install i3status-rust
   become: true
   become_user: aur_builder
   aur:
     use: yay
     state: latest
-    name:
-      - i3status-rust
-      - zsh-antidote
-      - librewolf
-      - jdk
-      - scala
-      - sbt
-      - groovy
-      - maven
-      - gradle
-      - command-not-found
-      - git-extras
-      - pass-git
-      - grip
-      - buku
-      - cloc
-      - lazydocker
-      - cointop
-      - fselect
-      - telegram-desktop
-      - ttf-material-icons-git
-      - ttf-firacode-ner
-      - tealdeer
-      - interception-tools
-      - interception-caps2esc
+    name: i3status-rust
+
+- name: Install zsh-antidote
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: zsh-antidote
+
+- name: Install librewolf
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: librewolf
+
+- name: Install jdk
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: jdk
+
+- name: Install scala
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: scala
+
+- name: Install sbt
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: sbt
+
+- name: Install groovy
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: groovy
+
+- name: Install maven
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: maven
+
+- name: Install gradle
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: gradle
+
+- name: Install command-not-found
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: command-not-found
+
+- name: Install git-extras
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: git-extras
+
+- name: Install pass-git
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: pass-git
+
+- name: Install grip
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: grip
+
+- name: Install buku
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: buku
+
+- name: Install cloc
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: cloc
+
+- name: Install lazydocker
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: lazydocker
+
+- name: Install cointop
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: cointop
+
+- name: Install fselect
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: fselect
+
+- name: Install telegram-desktop
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: telegram-desktop
+
+- name: Install ttf-material-icons-git
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: ttf-material-icons-git
+
+- name: Install ttf-firacode-ner
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: ttf-firacode-ner
+
+- name: Install tealdeer
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: tealdeer
+
+- name: Install interception-tools
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: interception-tools
+
+- name: Install interception-caps2esc
+  become: true
+  become_user: aur_builder
+  aur:
+    use: yay
+    state: latest
+    name: interception-caps2esc

@@ -1,6 +1,5 @@
 ---
-
-- name: setup udevmon
+- name: Setup udevmon configuration
   become: yes
   blockinfile:
     path: /etc/interception/udevmon.d/caps2esc.yaml
@@ -10,7 +9,9 @@
         DEVICE:
           EVENTS:
             EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
-- name: enable udevmon
+
+- name: Enable and start udevmon service
+  become: yes
   systemd:
     name: udevmon
     enabled: yes

@@ -1,34 +1,52 @@
 - hosts: 127.0.0.1
   collections:
     - kewlfft.aur
+
   tasks:
-    - name: install pacman packages
+    # Install Packages
+    - name: Install pacman packages
       include_tasks: playbooks/pacman_packages.yml
-    - name: install aur packages
+
+    - name: Install AUR packages
       include_tasks: playbooks/aur_packages.yml
-    - name: install sdkman
+
+    # Setup SDKs and Tools
+    - name: Install SDKMAN
       shell: "curl -s 'https://get.sdkman.io' | bash"
-    - name: install antigen
+
+    - name: Install Antigen
       become: true
       shell: "curl -L git.io/antigen > /usr/local/bin/antigen.zsh"
-    - name: enable docker
+
+    # System Services
+    - name: Enable and start Docker
       systemd:
         name: docker
         enabled: yes
         state: started
-    - name: setup sudo without password
+
+    # User Configuration
+    - name: Setup sudo without password
       become: true
       lineinfile:
         path: /etc/sudoers.d/irasikhin
         create: true
         line: "irasikhin ALL=(ALL) NOPASSWD: ALL"
-    - name: setup udevmon
+
+    # Additional Configurations
+    - name: Setup udevmon
       include_tasks: playbooks/udevmon.yml
-    - name: setup byobu
+
+    - name: Setup Byobu
       include_tasks: playbooks/byobu.yml
-    - name: setup headsets
+
+    - name: Setup headsets
       include_tasks: playbooks/headset.yml
-    #    - name: setup background
-    #      include_tasks: playbooks/background.yml
-    - name: setxkbmap
+
+    # Keyboard Layout
+    - name: Configure keyboard layout with setxkbmap
       include_tasks: playbooks/setup_setxkbmap.yml
+
+    # Optional: Setup background (uncomment to use)
+    # - name: Setup background
+    #   include_tasks: playbooks/background.yml

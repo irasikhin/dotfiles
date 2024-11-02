@@ -12,11 +12,11 @@ source $SCRIPTS/init_global_env.sh
 # pacman
 alias pacman="sudo pacman"
 
-# docker
-alias docker="podman"
-
-# docker-compose
-alias docker-compose="podman-compose"
+# # docker
+# alias docker="podman"
+#
+# # docker-compose
+# alias docker-compose="podman-compose"
 
 # python-local
 alias python-local=". ~/.python/bin/activate"

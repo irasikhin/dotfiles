@@ -2,7 +2,7 @@
 
 cd ansible && ansible-galaxy collection install community.general && cd - || exit 1
 cd ansible && ansible-galaxy collection install kewlfft.aur && cd - || exit 1
-cd ansible && ansible-playbook --connection=local -i env playbook.yml && cd - || exit 1
+cd ansible && ansible-playbook --connection=local -i env.yml playbook.yml && cd - || exit
 
 stow i3
 #stow rofi

@@ -1,8 +1,8 @@
 ---
-
-- name: enable module-switch-on-connect for pulseaudio
+- name: Enable module-switch-on-connect for PulseAudio
   become: true
   lineinfile:
     path: /etc/pulse/default.pa
     line: "load-module module-switch-on-connect ignore_virtual=no"
-    regexp: "load-module module-switch-on-connect.*"
+    regexp: "^load-module module-switch-on-connect.*"
+    state: present

@@ -11,7 +11,7 @@ export PATH=$PATH:/home/irasikhin/.gem/ruby/3.4.19/bin
 
 # OTHER
 export XDG_DATA_DIRS=$XDG_DATA_DIRS:~/bin
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+#export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
 export TERMINAL=termite
 export EDITOR=nvim
 export SHELL=/bin/zsh
