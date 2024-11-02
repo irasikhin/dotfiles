@@ -112,12 +112,6 @@
     name: tree
     state: present
 
-- name: Install yay
-  become: yes
-  community.general.pacman:
-    name: yay
-    state: present
-
 - name: Install alsa-utils
   become: yes
   community.general.pacman:
