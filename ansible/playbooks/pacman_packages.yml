@@ -16,12 +16,6 @@
     name: feh
     state: present
 
-- name: Install betterlockscreen
-  become: yes
-  community.general.pacman:
-    name: betterlockscreen
-    state: present
-
 - name: Install neovim
   become: yes
   community.general.pacman:

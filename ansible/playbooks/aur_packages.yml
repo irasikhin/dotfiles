@@ -212,3 +212,11 @@
     use: yay
     state: latest
     name: interception-caps2esc
+
+- name: Install betterlockscreen
+  become: yes
+  become_user: aur_builder
+  aur:
+    name: betterlockscreen
+    state: present
+
