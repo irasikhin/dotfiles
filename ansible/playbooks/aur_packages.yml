@@ -13,6 +13,21 @@
     validate: /usr/sbin/visudo -cf %s
     create: yes
 
+- name: Yay checkout
+  become: true
+  become_user: aur_builder
+  ansible.builtin.git:
+    repo: 'https://aur.archlinux.org/yay.git'
+    dest: '{{ yay_source_directory }}'
+
+- name: Build and install yay
+  become: true
+  become_user: aur_builder
+  command:
+    chdir: '{{ yay_source_directory }}'
+    cmd: "makepkg -sfi --noconfirm"
+    creates: /usr/bin/yay
+
 - name: Upgrade all packages using yay
   become: true
   become_user: aur_builder

@@ -7,9 +7,6 @@
     - name: Install pacman packages
       include_tasks: playbooks/pacman_packages.yml
 
-    - name: Install yay
-      include_tasks: playbooks/yay.yml
-
     - name: Install AUR packages
       include_tasks: playbooks/aur_packages.yml
 
