@@ -218,10 +218,10 @@ set $terminal "terminal"
 bindcode --release 133 exec --no-startup-id /home/irasikhin/work/pr/dotfiles/zsh/.config/scripts/double_mod_switch.sh
 assign [class=".*[A,a]lacritty.*"] $terminal
 
-# steam 
-set $steam "steam"
-bindsym $mod+p workspace $steam
-assign [class=".*[S,s]team.*"] $steam
+# spotify 
+set $spotify "spotify"
+bindsym $mod+p workspace $spotify
+assign [class=".*[S,s]potify.*"] $spotify
 
 # thunderbird
 set $thunderbird "thunderbird"
