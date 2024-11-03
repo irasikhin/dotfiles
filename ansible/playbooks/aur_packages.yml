@@ -227,11 +227,11 @@
     name: betterlockscreen
     state: present
 
-- name: Install librewolf-bin
-  become: true
-  become_user: aur_builder
-  aur:
-    use: yay
-    state: latest
-    name: librewolf
-
+#- name: Install librewolf-bin
+#  become: true
+#  become_user: aur_builder
+#  aur:
+#    use: yay
+#    state: latest
+#    name: librewolf
+#
