@@ -227,7 +227,7 @@
     name: betterlockscreen
     state: present
 
-- name: Install librewolf
+- name: Install librewolf-bin
   become: true
   become_user: aur_builder
   aur:
