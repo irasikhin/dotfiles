@@ -2,7 +2,7 @@
 
 cd ansible && ansible-galaxy collection install community.general && cd - || exit 1
 cd ansible && ansible-galaxy collection install kewlfft.aur && cd - || exit 1
-cd ansible && ansible-playbook --connection=local -i env.yml playbook.yml && cd - || exit
+cd ansible && ansible-playbook --connection=local --ask-become-pass -i env.yml playbook.yml && cd - || exit
 
 stow -t $HOME/ nvim
 stow -t $HOME/ i3
