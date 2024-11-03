@@ -4,7 +4,7 @@ default_border none
 font hack:monospace 16
 floating_modifier $mod
 workspace_auto_back_and_forth yes
-bindsym $mod+Return exec termite -e /bin/zsh 
+bindsym $mod+Return exec termite -e /bin/zsh
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+a focus parent,kill
 
@@ -141,7 +141,7 @@ bindsym $mod+r mode "resize"
 bar {
   font pango:DejaVu Sans Mono, FontAwesome 12
   position top
-	status_command i3status-rs ~/.config/i3/status.toml 
+	status_command i3status-rs ~/.config/i3/status.toml
   colors {
     separator #666666
     background #222222
@@ -209,16 +209,16 @@ set $code "code"
 bindsym $mod+c workspace $code
 assign [class=".*[C,c]ode.*"] $code
 
-# clion 
+# clion
 set $clion "clion"
 bindsym $mod+y workspace $clion
 assign [class=".*[C,c]lion.*"] $clion
 
 set $terminal "terminal"
-bindcode --release 133 exec --no-startup-id /home/irasikhin/work/pr/dotfiles/zsh/.config/scripts/double_mod_switch.sh
+bindcode --release 133 exec --no-startup-id $HOME/.config/scripts/double_mod_switch.sh
 assign [class=".*[A,a]lacritty.*"] $terminal
 
-# spotify 
+# spotify
 set $spotify "spotify"
 bindsym $mod+p workspace $spotify
 assign [class=".*[S,s]potify.*"] $spotify
