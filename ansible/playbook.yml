@@ -12,7 +12,7 @@
 
     # Setup SDKs and Tools
     - name: Install SDKMAN
-      shell: "curl -s 'https://get.sdkman.io' | bash"
+      shell: "curl -s 'https://get.sdkman.io?rcupdate=false' | bash"
 
     - name: Install Antigen
       become: true
