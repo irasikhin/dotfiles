@@ -231,3 +231,9 @@
   community.general.pacman:
     name: qutebrowser
     state: present
+
+- name: Install unzip
+  become: yes
+  community.general.pacman:
+    name: unzip
+    state: present
