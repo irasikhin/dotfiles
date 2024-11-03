@@ -1,7 +1,7 @@
 ---
 - name: Setup setxkbmap options in .profile
   lineinfile:
-    path: /home/irasikhin/.profile
+    path: "{{ local_home }}/.profile"
     state: present
     line: "{{ item.line }}"
     regexp: "{{ item.regexp }}"

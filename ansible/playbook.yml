@@ -29,9 +29,9 @@
     - name: Setup sudo without password
       become: true
       lineinfile:
-        path: /etc/sudoers.d/irasikhin
+        path: "/etc/sudoers.d/{{ local_user }}"
         create: true
-        line: "irasikhin ALL=(ALL) NOPASSWD: ALL"
+        line: "{{ local_user }} ALL=(ALL) NOPASSWD: ALL"
 
     # Additional Configurations
     - name: Setup udevmon
