@@ -235,7 +235,7 @@
 - name: Install zip
   become: yes
   community.general.pacman:
-    name: unzip
+    name: zip
     state: present
     
 - name: Install unzip
