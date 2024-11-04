@@ -11,9 +11,6 @@ on:
 jobs:
   test:
     runs-on: macos-latest
-    container:
-      image: archlinux:latest
-
     steps:
       - uses: actions/checkout@v3
 
