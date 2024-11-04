@@ -17,12 +17,30 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Ansible
-        run: pacman --noconfirm -Sy python python-pip ansible-core ansible
-
-      - name: Test
-        run: |
-          python -m venv ./venv
-          source ./venv/bin/activate
-          python3 -m pip install https://github.com/ansible/ansible/archive/devel.tar.gz
-          bash ${GITHUB_WORKSPACE}/install.sh
+      - uses: leleliu008/github-actions-vagrant@v1
+        with:
+          mem: 2048
+          box: archlinux/archlinux
+          run: |
+            export AUTOCONF_VERSION=2.69
+            export AUTOMAKE_VERSION=1.16
+            
+            export CFLAGS='-I/usr/local/include -L/usr/local/lib'
+            
+            if [ ! -f /usr/local/lib/libiconv.so ] ; then
+                sudo ln -s /usr/local/lib/libiconv.so.* /usr/local/lib/libiconv.so
+            fi
+            
+            run sudo pkg_add automake-1.16.2
+            
+            run ./autogen.sh
+            run ./configure --prefix=/usr
+            run make
+            run sudo make install
+            run file /usr/bin/ctags
+            run ctags --version
+            run pacman --noconfirm -Sy python python-pip ansible-core ansible
+            run python -m venv ./venv
+            run source ./venv/bin/activate
+            run python3 -m pip install https://github.com/ansible/ansible/archive/devel.tar.gz
+            run bash ${GITHUB_WORKSPACE}/install.sh
